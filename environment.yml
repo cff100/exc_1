@@ -3,9 +3,11 @@ channels:
   - conda-forge
 dependencies:
   - python=3.12
+  - pandas
+  - openpyxl
+  - pyxlsb
   # e outros pacotes
   - pip
   - pip:
     - -e .
     # outros pacotes pip que você usa
-

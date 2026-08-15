@@ -1,4 +1,4 @@
-name: <nome_do_ambiente>
+name: exc_1
 channels:
   - conda-forge
 dependencies:

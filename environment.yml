@@ -1,0 +1,11 @@
+name: <nome_do_ambiente>
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  # e outros pacotes
+  - pip
+  - pip:
+    - -e .
+    # outros pacotes pip que você usa
+

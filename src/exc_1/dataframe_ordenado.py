@@ -77,14 +77,16 @@ def agrupar_em_camadas(df, colunas_hierarquia=['DESCRIÇÃO', 'MARCA', 'MODELO']
 
 
 if __name__ == "__main__":
-    from exc_1.config.paths import EXCEL_FILE_PATH
+    from exc_1.config.paths import ExcelFilesPaths
     from exc_1.planilhas import criar_planilha_redefinida
-    xls = pd.ExcelFile(EXCEL_FILE_PATH)
+    xls = pd.ExcelFile(ExcelFilesPaths.BASE)
     coluna = "DESCRIÇÃO"
-    df_redefinida = criar_planilha_redefinida(xls, sheet=9, texto_chave=coluna)
+    sheet = 9
+    df_redefinida = criar_planilha_redefinida(xls, sheet=sheet, texto_chave=coluna)
     df_ordenado = agrupar_em_camadas(df_redefinida, colunas_hierarquia=['DESCRIÇÃO', 'MARCA', 'MODELO'], limite_sim=75)
     print(f"DataFrame após agrupar e ordenar por similaridade:\n{df_ordenado[coluna].head(20)}")
     #salvar o DataFrame ordenado em um novo arquivo Excel
-    df_ordenado.to_excel("planilha_ordenada.xlsx", index=False)
+    novo_caminho = ExcelFilesPaths.planilha_ordenada(sheet)
+    df_ordenado.to_excel(novo_caminho, index=False)
 
 

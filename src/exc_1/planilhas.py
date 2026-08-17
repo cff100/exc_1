@@ -59,8 +59,9 @@ def criar_planilha_redefinida(xls: pd.ExcelFile, sheet: str | int, texto_chave: 
     return df_redefinida
 
 if __name__ == "__main__":
-    from exc_1.config.paths import EXCEL_FILE_PATH
-    xls = pd.ExcelFile(EXCEL_FILE_PATH)
+    from exc_1.config.paths import ExcelFilesPaths
+    from exc_1.config.constants import Planilha9Headers
+    xls = pd.ExcelFile(ExcelFilesPaths.BASE)
     numero_planilhas = encontra_numero_planilhas(xls)
     print(f"Número de planilhas no arquivo: {numero_planilhas}")
     nomes_planilhas = encontra_nomes_planilhas(xls)
@@ -73,9 +74,9 @@ if __name__ == "__main__":
 
     print("-" * 140)
 
-    nova_planilha = definir_cabecalho_por_texto(planilha, "COTAÇÃO")
+    nova_planilha = definir_cabecalho_por_texto(planilha, Planilha9Headers.H1)
     print(f"Conteúdo da planilha após definir o cabeçalho:\n{nova_planilha.head(20)}")
     print(nova_planilha.columns)
     print("\n")
-    coluna = "CONCATENADO"
+    coluna = Planilha9Headers.H2
     print(f"Conteúdo da coluna '{coluna}':\n{nova_planilha[coluna].head(20)}")

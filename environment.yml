@@ -6,6 +6,8 @@ dependencies:
   - pandas
   - openpyxl
   - pyxlsb
+  - rapidfuzz
+  - scipy
   # e outros pacotes
   - pip
   - pip:

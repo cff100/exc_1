@@ -1,7 +1,6 @@
 import pandas as pd
 from typing import Optional
 
-from exc_1.config.paths import EXCEL_FILE_PATH
 
 def encontra_numero_planilhas(xls: pd.ExcelFile):
     """Encontra o número de planilhas em um arquivo Excel."""
@@ -50,7 +49,17 @@ def definir_cabecalho_por_texto(df, texto_chave):
 
     return df_novo
 
+def criar_planilha_redefinida(xls: pd.ExcelFile, sheet: str | int, texto_chave: str):
+    """
+    Lê uma planilha específica do arquivo Excel, redefine o cabeçalho com base em 'texto_chave',
+    e retorna o DataFrame resultante.
+    """
+    df_planilha = ler_planilha(xls, sheet)
+    df_redefinida = definir_cabecalho_por_texto(df_planilha, texto_chave)
+    return df_redefinida
+
 if __name__ == "__main__":
+    from exc_1.config.paths import EXCEL_FILE_PATH
     xls = pd.ExcelFile(EXCEL_FILE_PATH)
     numero_planilhas = encontra_numero_planilhas(xls)
     print(f"Número de planilhas no arquivo: {numero_planilhas}")
@@ -66,3 +75,7 @@ if __name__ == "__main__":
 
     nova_planilha = definir_cabecalho_por_texto(planilha, "COTAÇÃO")
     print(f"Conteúdo da planilha após definir o cabeçalho:\n{nova_planilha.head(20)}")
+    print(nova_planilha.columns)
+    print("\n")
+    coluna = "CONCATENADO"
+    print(f"Conteúdo da coluna '{coluna}':\n{nova_planilha[coluna].head(20)}")

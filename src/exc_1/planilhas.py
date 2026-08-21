@@ -1,5 +1,4 @@
 import pandas as pd
-from typing import Optional
 
 
 def encontra_numero_planilhas(xls: pd.ExcelFile):

@@ -3,7 +3,8 @@ import pandas as pd
 
 
 class GerenciadorAuditoriaParquet:
-    def __init__(self, caminho_arquivo: Path, replace: bool = False):
+
+    def __init__(self, caminho_arquivo: Path, replace: bool = False) -> None:
         self.caminho_arquivo = caminho_arquivo
         self.replace = replace
         self.colunas = ["PLAQUETA", "CONCATENADO", "DESCRICAO", "MARCA", 
